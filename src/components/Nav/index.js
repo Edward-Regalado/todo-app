@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container } from './NavElements';
 
 function Header() {
   return (
-    <>
-      <h2>NavBar</h2>
-    </>
+    <Container>
+      <h2>ToDo App</h2>
+    </Container>
   );
 }
 
