@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container } from './FooterElements';
 
 function Footer() {
   return (
-    <div>
+    <Container>
         <h2>Footer</h2>
-    </div>
+    </Container>
   );
 }
 
