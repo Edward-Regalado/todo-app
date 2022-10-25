@@ -4,7 +4,7 @@ import { Container } from './FooterElements';
 function Footer() {
   return (
     <Container>
-        <h2>Footer</h2>
+        <h2>&copy; ToDo 2020</h2>
     </Container>
   );
 }

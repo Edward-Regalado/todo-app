@@ -22,6 +22,10 @@ function ToDo() {
     setList([...list, item]);
   }
 
+  function clearAll(){
+    document.getElementById('todoForm').reset();
+  }
+
   function deleteItem(id) {
     const items = list.filter( item => item.id !== id );
     setList(items);
@@ -49,7 +53,7 @@ function ToDo() {
   return (
     <Container>
       <Wrapper>
-        <Form handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <Form handleChange={handleChange} handleSubmit={handleSubmit} clearAll={clearAll}/>
         <List toggleComplete={toggleComplete} list={list} deleteItem={deleteItem}/>
       </Wrapper>
     </Container>
