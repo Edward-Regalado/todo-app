@@ -14,7 +14,7 @@ function Footer() {
 
   return (
     <Container style={themeStyles}>
-        <h2>&copy; ToDo 2020</h2>
+        <span>&copy; ToDo 2020</span>
     </Container>
   );
 }

@@ -20,7 +20,7 @@ export const ButtonContainer = styled.div`
 export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     text-align: center;
 `;
 
