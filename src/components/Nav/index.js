@@ -1,9 +1,19 @@
 import React from 'react';
-import { Container,LightButton, DarkButton } from './NavElements';
+import '../../assets/styles/nav.css';
+import 'antd/dist/antd.css';
+
+import { Container, ButtonContainer, LogoContainer } from './NavElements';
 import { TbNotes } from 'react-icons/tb';
+import { Switch } from 'antd';
 import { useTheme, useThemeUpdate } from '../../context/settings/Theme/ThemeContext';
 
 function Header() {
+
+  // const [toggle, setToggle ] = useState(false);
+
+  // const toggler = () => {
+  //   toggle ? setToggle(false) : setToggle(true);
+  // };
 
   const darkTheme = useTheme();
   const toggleTheme = useThemeUpdate();
@@ -11,19 +21,29 @@ function Header() {
 
   const themeStyles = {
     backgroundImage: darkTheme ? 'linear-gradient(160deg, #000000 0%, #b3b3b3' : 'linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)',
-    color: darkTheme ? '#FFF' : '#333',
+    color: darkTheme ? '#fff' : '#333',
   };
 
-  const logoStyle = {
-    fontSize: '3rem',
-    textAlign: 'center'
+  const toggleDark = {
+    backgroundColor: 'black',
+    color: 'black',
+  };
+
+  const toggleLight = {
+    backgroundColor: 'gray',
+    color: 'black',
   };
 
   return (
     <Container style={themeStyles}>
-      {darkTheme ? <DarkButton onClick={toggleTheme}>Light</DarkButton> : <LightButton onClick={toggleTheme}>Dark</LightButton> }
-      <h2>ToDo App</h2>
-      <TbNotes style={logoStyle}/>
+      <ButtonContainer>
+      {darkTheme ? <Switch className='toggle' style={toggleDark} onClick={toggleTheme} checkedChildren='light' unCheckedChildren='dark'/> : <Switch className='toggle' style={toggleLight} onClick={toggleTheme} checkedChildren='light' unCheckedChildren='dark'/>}
+      </ButtonContainer>
+  
+      <LogoContainer>
+          <span>ToDo App</span>
+        <TbNotes />
+      </LogoContainer>
     </Container>
   );
 }
