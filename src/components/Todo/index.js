@@ -4,9 +4,13 @@ import useForm from '../../hooks/form.js';
 import Form from '../Form';
 import List from '../List';
 
+import { useTheme } from '../../context/settings/Theme/ThemeContext';
+
 import { v4 as uuid } from 'uuid';
 
 function ToDo() {
+
+  const darkTheme = useTheme();
 
   const [defaultValues] = useState({
     difficulty: 4,
@@ -20,6 +24,10 @@ function ToDo() {
     item.complete = false;
     console.log(item);
     setList([...list, item]);
+  }
+
+  function clearAll(){
+    document.getElementById('todoForm').reset();
   }
 
   function deleteItem(id) {
@@ -37,8 +45,11 @@ function ToDo() {
     });
 
     setList(items);
-
   }
+
+  const themeStyles = {
+    backgroundColor: darkTheme ? '#d4d1d1' : '#FFF',
+  };
 
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
@@ -47,9 +58,9 @@ function ToDo() {
   }, [list]);
 
   return (
-    <Container>
+    <Container style={themeStyles}>
       <Wrapper>
-        <Form handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <Form handleChange={handleChange} handleSubmit={handleSubmit} clearAll={clearAll}/>
         <List toggleComplete={toggleComplete} list={list} deleteItem={deleteItem}/>
       </Wrapper>
     </Container>

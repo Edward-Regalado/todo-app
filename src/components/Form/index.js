@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container } from './FormElements';
-import { Card, Button } from 'react-bootstrap';
+import { Container, ButtonWrapper } from './FormElements';
+import { Card, Button, } from 'react-bootstrap';
 
 function Form(props) {
 
   return (
     <Container>
        <form
+       id='todoForm'
        onSubmit={props.handleSubmit}
        >
         <Card style={{ width: '18rem' }}>
@@ -36,7 +37,10 @@ function Form(props) {
             onChange={props.handleChange}
              />
           </Card.Body>
-          <Button type='submit'>Add Item</Button>
+          <ButtonWrapper>
+            <Button type='submit'>Add Item</Button>
+            <Button onClick={props.clearAll}>Clear</Button>
+          </ButtonWrapper>
         </Card>
         </form>
     </Container>
