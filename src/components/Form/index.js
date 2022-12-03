@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container, ButtonWrapper } from './FormElements';
-import { Card, Button, } from 'react-bootstrap';
+import React,  { useState } from 'react';
+import { Container, ButtonWrapper, SelectContainer } from './FormElements';
+import { Card, Button } from 'react-bootstrap';
 
-function Form(props) {
+function FormOptions(props) {
 
   return (
     <Container>
@@ -47,4 +47,4 @@ function Form(props) {
   );
 }
 
-export default Form;
+export default FormOptions;

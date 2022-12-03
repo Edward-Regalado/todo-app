@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* background: lightcyan; */
@@ -16,4 +17,8 @@ export const ButtonWrapper = styled.div`
     justify-content: space-around;
     /* border: 2px solid black; */
     margin: 20px 0px;
+`;
+
+export const SelectContainer = styled.div`
+    width: 47%;
 `;
