@@ -1,21 +1,22 @@
 import '../../assets/styles/list.css';
 import React, { useState } from 'react';
-import { Card, ListGroup, Badge } from 'react-bootstrap';
-import { Container, ButtonDelete, ButtonComplete, ButtonFalse } from './ListElements';
+import { Card, ListGroup, Badge, Form } from 'react-bootstrap';
+import { Container, ButtonDelete, ButtonComplete, ButtonFalse, SelectContainer } from './ListElements';
 import ReactPaginate from 'react-paginate';
 
 function List(props) {
 
   const [pageNumber, setPageNumber] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
 
-  const itemsPerPage = 3;
+  // const itemsPerPage = 3;
   const pagesVisited = pageNumber * itemsPerPage;
 
   const displayItems = props.list
     .slice(pagesVisited, pagesVisited + itemsPerPage)
-    .map((item) => {
+    .map((item, idx) => {
       return (
-        <Card className='list-card' key={item.id} aria-label="list-item" style={{ width: '40em', marginBottom: '1em' }}>
+        <Card key={idx} className='list-card' key={item.id} aria-label="list-item" style={{ width: '90%', marginBottom: '1em' }}>
               <Card.Body>
                   <Card.Title className='card-title'>
                   {item.complete === false ? (
@@ -65,6 +66,16 @@ function List(props) {
         />
       </> 
       : null}
+      <SelectContainer>
+        <Form.Select aria-label="Default select example" onChange={(e) => setItemsPerPage(e.target.value)}>
+          <option>Select Items Per Page</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+          <option value="5">Five</option>
+        </Form.Select>
+      </SelectContainer>
     </Container>
   );
 }

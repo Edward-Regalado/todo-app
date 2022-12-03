@@ -24,10 +24,9 @@ function ToDo() {
     item.complete = false;
     console.log(item);
     setList([...list, item]);
-    console.log('addItem: ', list);
+    // console.log('addItem: ', list);
     localStorage.setItem('list', JSON.stringify(item));
-    // list doesn't work - render empty array
-    // localStorage.setItem('list', JSON.stringify(list)); 
+    // list doesn't work - render empty array 
   }
   
   function clearAll(){
@@ -35,14 +34,16 @@ function ToDo() {
   }
   
   function deleteItem(id) {
-    const localStorage = localStorage.getItem('list');
-    const items = localStorage.filter( item => item.id === id);
-    handleLocalStorage(items);
+    // const localStorage = localStorage.getItem('list');
+    // const itemFiltered = localStorage.filter(item => item.id === id);
+    const itemFiltered = list.filter(item => item.id !== id);
+    handleLocalStorage(itemFiltered);
+
+    // localStorage.removeItem('id', id);
     
     // setList(items);
     // const items = list.filter( item => item.id !== id );
     // localStorage.removeItem(items);
-    // setList(items);
   }
   
   function toggleComplete(id) {
@@ -62,15 +63,19 @@ function ToDo() {
       // setList([]);
       console.log('local storage is empty');
     } else {
-      setList([...list, JSON.parse(data)]);
+      // setList([...list, JSON.parse(data)]);
+      setList(JSON.parse(data));
     }
   }
   
   function getFromLocalStorage(){
     const data = localStorage.getItem('list');
-    if(data !== null){
-      setList(JSON.parse(data));
-    }
+    setList(JSON.parse(data));
+    // if(data !== null){
+      // THIS BREAKS IT ON RELOAD
+      // setList(JSON.parse(data));
+      // setList([...list, JSON.parse(data)]);
+    // } 
   }
 
   const themeStyles = {
@@ -80,14 +85,13 @@ function ToDo() {
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
-
-    const data = localStorage.getItem('list');
-    if(data !== null){
-      setList(JSON.parse(data));
-    }
+    
+    // const data = localStorage.getItem('list');
+    // if(data !== null){
+    //   setList(JSON.parse(data));
+    // }
     // handleLocalStorage();
     getFromLocalStorage();
-
     document.title = `To Do List: ${incomplete}`;
   }, []);
 

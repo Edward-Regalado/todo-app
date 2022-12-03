@@ -38,3 +38,7 @@ export const ButtonFalse = styled.button`
     /* width: 30px; */
     /* height: 15px; */
 `;
+
+export const SelectContainer = styled.div`
+    width: 50%;
+`;
