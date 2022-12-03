@@ -1,7 +1,7 @@
 # LAB - Context API
 
 - To Do List Manager Phase 1: Incorporate configuration settings to the application.  
-[Lab31 README](./labs/lab31.md)
+- [Lab31 README](./labs/lab31.md)
 
 > ## Phase 1 Requirements
 
@@ -17,6 +17,8 @@
     - Whether or not to show completed items
 
 > ## Phase 2 Requirements
+
+- [Lab32 README](./labs/lab32.md)
 
 In Phase 2, we’re going to extend the functionality of our application by allowing the user to make some decisions on how they would like the application to function. Specifically, we’ll let them make changes to 2 settings.
 
