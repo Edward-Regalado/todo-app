@@ -70,7 +70,9 @@ function ToDo() {
   
   function getFromLocalStorage(){
     const data = localStorage.getItem('list');
-    setList(JSON.parse(data));
+    if(data !== null){
+      setList(JSON.parse(data));
+    }
     // if(data !== null){
       // THIS BREAKS IT ON RELOAD
       // setList(JSON.parse(data));
