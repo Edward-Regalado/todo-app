@@ -11,6 +11,14 @@ export const Container = styled.div`
     /* border: 2px solid black; */
 `;
 
+export const LoginButton = styled.button`
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 15px;
+    margin-left: 30px;
+`;
+
 export const ButtonContainer = styled.div`
     width: 50%;
     margin-right: 390px;

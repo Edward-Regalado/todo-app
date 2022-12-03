@@ -2,7 +2,7 @@ import React from 'react';
 import '../../assets/styles/nav.css';
 import 'antd/dist/antd.css';
 
-import { Container, ButtonContainer, LogoContainer } from './NavElements';
+import { Container, ButtonContainer, LogoContainer, LoginButton } from './NavElements';
 import { TbNotes } from 'react-icons/tb';
 import { Switch } from 'antd';
 import { useTheme, useThemeUpdate } from '../../context/settings/Theme/ThemeContext';
@@ -44,6 +44,7 @@ function Header() {
           <span>ToDo App</span>
         <TbNotes />
       </LogoContainer>
+      <LoginButton>Login</LoginButton>
     </Container>
   );
 }

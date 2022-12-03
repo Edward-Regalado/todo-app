@@ -24,27 +24,53 @@ function ToDo() {
     item.complete = false;
     console.log(item);
     setList([...list, item]);
+    console.log('addItem: ', list);
+    localStorage.setItem('list', JSON.stringify(item));
+    // list doesn't work - render empty array
+    // localStorage.setItem('list', JSON.stringify(list)); 
   }
-
+  
   function clearAll(){
     document.getElementById('todoForm').reset();
   }
-
+  
   function deleteItem(id) {
-    const items = list.filter( item => item.id !== id );
-    setList(items);
+    const localStorage = localStorage.getItem('list');
+    const items = localStorage.filter( item => item.id === id);
+    handleLocalStorage(items);
+    
+    // setList(items);
+    // const items = list.filter( item => item.id !== id );
+    // localStorage.removeItem(items);
+    // setList(items);
   }
-
+  
   function toggleComplete(id) {
-
     const items = list.map( item => {
       if ( item.id == id ) {
-        item.complete = ! item.complete;
+        item.complete = !item.complete;
       }
       return item;
     });
-
     setList(items);
+  }
+  
+  function handleLocalStorage(list){
+    localStorage.setItem('list', JSON.stringify(list));
+    const data = localStorage.getItem('list');
+    if(data === null){
+      // setList([]);
+      console.log('local storage is empty');
+    } else {
+      setList([...list, JSON.parse(data)]);
+    }
+  }
+  
+  function getFromLocalStorage(){
+    const data = localStorage.getItem('list');
+    if(data !== null){
+      setList(JSON.parse(data));
+    }
   }
 
   const themeStyles = {
@@ -54,8 +80,16 @@ function ToDo() {
   useEffect(() => {
     let incompleteCount = list.filter(item => !item.complete).length;
     setIncomplete(incompleteCount);
+
+    const data = localStorage.getItem('list');
+    if(data !== null){
+      setList(JSON.parse(data));
+    }
+    // handleLocalStorage();
+    getFromLocalStorage();
+
     document.title = `To Do List: ${incomplete}`;
-  }, [list]);
+  }, []);
 
   return (
     <Container style={themeStyles}>
