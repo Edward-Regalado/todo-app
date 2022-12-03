@@ -16,7 +16,7 @@ function List(props) {
     .slice(pagesVisited, pagesVisited + itemsPerPage)
     .map((item, idx) => {
       return (
-        <Card key={idx} className='list-card' key={item.id} aria-label="list-item" style={{ width: '90%', marginBottom: '1em' }}>
+        <Card key={idx} className='list-card' aria-label="list-item" style={{ width: '90%', marginBottom: '1em' }}>
               <Card.Body>
                   <Card.Title className='card-title'>
                   {item.complete === false ? (
